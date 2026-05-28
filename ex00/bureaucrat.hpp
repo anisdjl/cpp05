@@ -4,7 +4,7 @@
 #include <iostream>
 #include <string.h>
 
-class Bureaucrat
+class Bureaucrat : public std::exception
 {
 	private:
 		std::string	_name;
@@ -18,6 +18,7 @@ class Bureaucrat
 		void GradeTooLowException(void);
 		void incrementGrade(void); // je sais pas si il faut que je fasse un overload de l'operateur +
 		void decrementGrade(void); // pareil je ne sais pas si il faut faire un overload
+		const char *what() const noexcept override;
 };
 
 std::ostream &operator<<(std::ostream &out, const Bureaucrat &bureau);
