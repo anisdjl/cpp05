@@ -15,7 +15,8 @@ class Bureaucrat
 		std::string	getName(void) const;
 		Bureaucrat(std::string name, int grade);
 		~Bureaucrat(void);
-		// ici je dois ajouter les constructeur de la forme canonique
+		Bureaucrat(const Bureaucrat &bureau);
+		Bureaucrat &operator=(const Bureaucrat &bureau);
 
 		void 		incrementGrade(void);
 		void 		decrementGrade(void);

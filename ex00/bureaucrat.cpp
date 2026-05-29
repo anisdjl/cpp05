@@ -12,7 +12,22 @@ Bureaucrat::Bureaucrat(std::string name, int grade)
 
 Bureaucrat::~Bureaucrat(void)
 {
-	std::cout << "Bureaucrat destructor's called\n";
+}
+
+Bureaucrat::Bureaucrat(const Bureaucrat &bureau)
+{
+	_grade = bureau.getGrade();
+	_name = bureau.getName();
+}
+
+Bureaucrat &Bureaucrat::operator=(const Bureaucrat &bureau)
+{
+	if (this != &bureau)
+	{
+		_grade = bureau.getGrade();
+		_name = bureau.getName();
+	}
+	return (*this);
 }
 
 int	Bureaucrat::getGrade(void) const
