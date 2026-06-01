@@ -1,21 +1,20 @@
-#include "bureaucrat.hpp"
-
+#include "Bureaucrat.hpp"
+#include "Form.hpp"
 int main(void)
 {
-	Bureaucrat Anis("Anis", 1);
+	Bureaucrat	Anis("Anis", 10);
 	try
 	{
-		Bureaucrat Anis("Anis", 1);
-		Bureaucrat Evan("Evan", 1);
+		Form		form_test("form_test", 12, 150);
+		Anis.signForm(form_test);
 	}
-	catch (Bureaucrat::GradeTooHighException &e)
+	catch(Form::GradeTooHighException &e)
 	{
-		std::cout << e.what();
+		std::cerr << e.what();
 	}
-	catch (Bureaucrat::GradeTooLowException &e)
+	catch(Form::GradeTooLowException &e)
 	{
-		std::cout << e.what();
+		std::cerr << e.what();
 	}
-	std::cout << Anis;
 	return (0);
 }
