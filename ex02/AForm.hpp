@@ -25,6 +25,7 @@ class AForm
 		int			getSigngrade(void) const;
 		bool		formState(void) const;
 		int	AForm::gradeCheck(int grade);
+		virtual void	execute(Bureaucrat const & executor) const = 0;
 
 		class GradeTooHighException : public std::exception
 		{
