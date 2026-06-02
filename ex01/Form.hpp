@@ -25,7 +25,7 @@ class Form
 		int			getSigngrade(void) const;
 		bool		formState(void) const;
 		void		beSigned(const Bureaucrat &bureau);
-		class GradeTooHighException : std::exception
+		class GradeTooHighException : public std::exception
 		{
 			private:
 				std::string	_error;
@@ -35,7 +35,7 @@ class Form
 				const char *what() const throw();
 		};
 
-		class GradeTooLowException : std::exception
+		class GradeTooLowException : public std::exception
 		{
 			private:
 				std::string	_error;

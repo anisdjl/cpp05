@@ -21,7 +21,7 @@ class Bureaucrat
 		void 		incrementGrade(void);
 		void 		decrementGrade(void);
 		
-		class GradeTooHighException : std::exception
+		class GradeTooHighException : public std::exception
 		{
 			private:
 				std::string	_error;
@@ -31,7 +31,7 @@ class Bureaucrat
 				const char *what() const throw();
 		};
 
-		class GradeTooLowException
+		class GradeTooLowException : public std::exception
 		{
 			private:
 				std::string _error;
