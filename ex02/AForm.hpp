@@ -4,6 +4,9 @@
 #include <iostream>
 #include <string>
 #include "Bureaucrat.hpp"
+#include <fstream>
+#include <cstdlib>
+#include <ctime>
 
 class Bureaucrat;
 class AForm
@@ -20,12 +23,13 @@ class AForm
 		AForm(const AForm &src);
 		AForm &operator=(const AForm &src);
 		virtual ~AForm();
-		std::string	getName(void) const;
-		int			getExecgrade(void) const;
-		int			getSigngrade(void) const;
-		bool		formState(void) const;
-		int	AForm::gradeCheck(int grade);
+		std::string		getName(void) const;
+		int				getExecgrade(void) const;
+		int				getSigngrade(void) const;
+		bool			formState(void) const;
+		int				gradeCheck(int grade);
 		virtual void	execute(Bureaucrat const & executor) const = 0;
+		void			checkExecGrade(const Bureaucrat &execute) const;
 
 		class GradeTooHighException : public std::exception
 		{
@@ -44,6 +48,16 @@ class AForm
 			public:
 				GradeTooLowException(int grade);
 				~GradeTooLowException(void) throw();
+				const char *what() const throw();
+		};
+
+		class FormNotSigned : public std::exception
+		{
+			private:
+				std::string	_error;
+			public:
+				FormNotSigned(std::string name);
+				~FormNotSigned(void) throw();
 				const char *what() const throw();
 		};
 };

@@ -59,3 +59,60 @@ int	AForm::gradeCheck(int grade)
 	else
 		return (grade);
 }
+
+void	AForm::checkExecGrade(const Bureaucrat &execute) const
+{
+	if (_signed == false)
+		throw AForm::FormNotSigned(_name);
+	if (execute.getGrade() < this->getExecgrade())
+		throw AForm::GradeTooHighException(execute.getGrade());
+	else if (_gradeToExec > this->getExecgrade())
+		throw AForm::GradeTooLowException(execute.getGrade());
+	else
+		return ;
+}
+
+AForm::GradeTooHighException::GradeTooHighException(int grade)
+{
+	_error = "The grade " + std::to_string(grade) + " is too high\n";
+}
+
+AForm::GradeTooHighException::~GradeTooHighException(void) throw()
+{
+
+}
+
+const char* AForm::GradeTooHighException::what() const throw()
+{
+	return (_error.c_str());
+}
+
+AForm::GradeTooLowException::GradeTooLowException(int grade)
+{
+	_error = "The grade " + std::to_string(grade) + " is too low\n";
+}
+
+AForm::GradeTooLowException::~GradeTooLowException(void) throw()
+{
+
+}
+
+const char* AForm::GradeTooLowException::what() const throw()
+{
+	return (_error.c_str());
+}
+
+AForm::FormNotSigned::FormNotSigned(std::string name)
+{
+	_error = "The form " + name + "is not signed\n";
+}
+
+AForm::FormNotSigned::~FormNotSigned(void)
+{
+
+}
+
+const char* AForm::FormNotSigned::what(void) const throw()
+{
+	return (_error.c_str());
+}
