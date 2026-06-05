@@ -6,7 +6,8 @@ SRC = main.cpp \
 	  PresidentialPardonForm.cpp \
 	  RobotomyRequestForm.cpp \
 	  ShrubberyCreationForm.cpp \
-	  AForm.cpp
+	  AForm.cpp \
+	  Intern.cpp
 OBJ = $(SRC:.cpp=.o)
 
 all: $(NAME)
