@@ -72,7 +72,9 @@ void	AForm::checkExecGrade(const Bureaucrat &execute) const
 
 AForm::GradeTooHighException::GradeTooHighException(int grade)
 {
-	_error = "The grade " + std::to_string(grade) + " is too high\n";
+	std::stringstream err;
+	err << "The grade " << grade << " is too high\n";
+	_error = err.str();
 }
 
 AForm::GradeTooHighException::~GradeTooHighException(void) throw()
@@ -87,7 +89,9 @@ const char* AForm::GradeTooHighException::what() const throw()
 
 AForm::GradeTooLowException::GradeTooLowException(int grade)
 {
-	_error = "The grade " + std::to_string(grade) + " is too low\n";
+	std::stringstream err;
+	err << "The grade " << grade << " is too low\n";
+	_error = err.str();
 }
 
 AForm::GradeTooLowException::~GradeTooLowException(void) throw()
@@ -102,7 +106,9 @@ const char* AForm::GradeTooLowException::what() const throw()
 
 AForm::FormNotSigned::FormNotSigned(std::string name)
 {
-	_error = "The form " + name + " is not signed, so it can't be executed\n";
+	std::stringstream err;
+	err << "The form " << name << " is not signed, so it can't be executed\n";
+	_error = err.str();
 }
 
 AForm::FormNotSigned::~FormNotSigned(void) throw()

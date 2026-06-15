@@ -56,7 +56,7 @@ void	Bureaucrat::decrementGrade(void)
 
 std::ostream	&operator<<(std::ostream &out, const Bureaucrat &bureau)
 {
-	out << bureau.getName() + ", bureaucrat grade " + std::to_string(bureau.getGrade()) + "\n";
+	out << bureau.getName() << ", bureaucrat grade " << bureau.getGrade() << "\n";
 
 	return (out);
 }
@@ -65,7 +65,9 @@ std::ostream	&operator<<(std::ostream &out, const Bureaucrat &bureau)
 
 Bureaucrat::GradeTooHighException::GradeTooHighException(const std::string &name, int garde)
 {
-	_error = "The garde " + std::to_string(garde) + " is too high to create the bureaucrat " + name + '\n';
+	std::stringstream err;
+	err << "The garde " << garde << " is too high to create the bureaucrat " << name << "\n";
+	_error = err.str();
 }
 
 Bureaucrat::GradeTooHighException::~GradeTooHighException() throw()
@@ -80,7 +82,9 @@ const char *Bureaucrat::GradeTooHighException::what() const throw()
 
 Bureaucrat::GradeTooLowException::GradeTooLowException(const std::string &name, int garde)
 {
-	_error = "The garde " + std::to_string(garde) + " is too low to create the bureaucrat " + name + '\n';
+	std::stringstream err;
+	err << "The garde " << garde << " is too low to create the bureaucrat " << name << "\n";
+	_error = err.str();
 }
 
 Bureaucrat::GradeTooLowException::~GradeTooLowException() throw()

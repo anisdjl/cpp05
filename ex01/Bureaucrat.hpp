@@ -5,6 +5,7 @@
 #include <string>
 #include <exception>
 #include "Form.hpp"
+#include "sstream"
 
 class Form;
 class Bureaucrat

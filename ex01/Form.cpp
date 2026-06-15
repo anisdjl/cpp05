@@ -70,7 +70,9 @@ std::ostream	&operator<<(std::ostream &out, const Form &form)
 
 Form::GradeTooHighException::GradeTooHighException(int grade)
 {
-	_error = "The grade " + std::to_string(grade) + " is too high\n";
+	std::stringstream err;
+	err << "The grade " << grade << " is too high\n";
+	_error = err.str();
 }
 
 Form::GradeTooHighException::~GradeTooHighException(void) throw()
@@ -85,7 +87,9 @@ const char* Form::GradeTooHighException::what() const throw()
 
 Form::GradeTooLowException::GradeTooLowException(int grade)
 {
-	_error = "The grade " + std::to_string(grade) + " is too low\n";
+	std::stringstream err;
+	err << "The grade " << grade << " is too low\n";
+	_error = err.str();
 }
 
 Form::GradeTooLowException::~GradeTooLowException(void) throw()
